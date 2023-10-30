@@ -4,6 +4,8 @@
     {
         public int IdPais { get; set; }
 
+        public IdiomaDTO IdIdioma { get; set; }
+
         public string NombrePais { get; set; }
     }
 }

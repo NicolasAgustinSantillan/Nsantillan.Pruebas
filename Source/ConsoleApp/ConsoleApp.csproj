@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase\DB_TEST.cs" />
+    <Compile Include="DataBase\DTO\IdiomaDTO.cs" />
     <Compile Include="DataBase\DTO\PaisDTO.cs" />
     <Compile Include="DataBase\DTO\PersonaDTO.cs" />
     <Compile Include="DataBase\Procedures.cs" />

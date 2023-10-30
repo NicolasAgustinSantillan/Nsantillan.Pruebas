@@ -1,6 +1,5 @@
-﻿using ConsoleApp.DataBase;
-using ConsoleApp.Lucas_TP_01_2023;
-using System;
+﻿using System;
+using ConsoleApp.DataBase;
 
 namespace ConsoleApp
 {
@@ -14,7 +13,6 @@ namespace ConsoleApp
             Console.ReadKey();
 
             Console.WriteLine("Hola mundo :D");
-
         }
     }
 }

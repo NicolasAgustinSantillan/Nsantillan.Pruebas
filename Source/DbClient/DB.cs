@@ -50,7 +50,7 @@ namespace DbClient
             }
         }
 
-        private static List<T> CreateGeneric<T>(DataTable table) where T : class
+        private List<T> CreateGeneric<T>(DataTable table) where T : class
         {
             List<T> lista = new List<T>();
             for (int i = 0; i < table.Rows.Count; i++)
@@ -92,7 +92,7 @@ namespace DbClient
             return lista;
         }
 
-        private static object CreateValueGeneric<T>(DataTable table, System.Reflection.PropertyInfo propiedad, string columna, int index) where T : class
+        private object CreateValueGeneric<T>(DataTable table, System.Reflection.PropertyInfo propiedad, string columna, int index) where T : class
         {
             // Obtener las propiedades públicas de la clase T
             var tipo = Nullable.GetUnderlyingType(propiedad.PropertyType) ?? propiedad.PropertyType;
@@ -103,14 +103,15 @@ namespace DbClient
             // Obtener las propiedades públicas de la clase T
             var propiedadesTipo = tipo.GetProperties();
 
-            try
-            {
-                // Recorrer cada propiedad y asignarle el valor de la columna correspondiente
-                foreach (var prop in propiedadesTipo)
-                {
-                    // Obtener el nombre de la columna que coincide con el nombre de la propiedad
-                    var colum = prop.Name;
 
+            // Recorrer cada propiedad y asignarle el valor de la columna correspondiente
+            foreach (var prop in propiedadesTipo)
+            {
+                // Obtener el nombre de la columna que coincide con el nombre de la propiedad
+                var colum = prop.Name;
+                
+                try
+                {
                     // Obtener el valor de la columna como un objeto
                     string valor = table.Rows[index][colum].ToString();
                     var tipoProp = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
@@ -119,10 +120,10 @@ namespace DbClient
                     // Asignar el valor convertido a la propiedad del objeto
                     prop.SetValue(objeto, valorConvertido);
                 }
-            }
-            catch (Exception ex)
-            {
-                return CreateValueGeneric<T>(table, propiedad, columna, index);
+                catch (Exception ex)
+                {
+                    prop.SetValue(objeto, CreateValueGeneric<T>(table, prop, colum, index));
+                }
             }
 
             return objeto;
