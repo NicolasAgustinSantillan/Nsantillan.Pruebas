@@ -8,7 +8,7 @@ namespace Consola
     internal class LinQ
     {
         /// <summary>
-        /// Su uso es para comparar un VALOR EXTERNO con los valores de una LISTA
+        /// Aggregate se una para comparar un VALOR EXTERNO con los valores de una LISTA
         /// </summary>
         internal static void Aggregate()
         {
@@ -31,7 +31,7 @@ namespace Consola
         }
 
         /// <summary>
-        /// Su uso principal es de evaluar si TODOS los valores de la lista COINCIDEN con la CONDICION
+        /// All se usa principalmente para evaluar si TODOS los valores de la lista COINCIDEN con la CONDICION
         /// </summary>
         public static void All()
         {
@@ -52,7 +52,7 @@ namespace Consola
         }
 
         /// <summary>
-        /// Sirve para verificar si tiene POR LO MENOS 1 elemento el ARRAY x
+        /// Any sirve para verificar si tiene POR LO MENOS 1 elemento el ARRAY x
         /// </summary>
         internal static void Any()
         {
@@ -101,6 +101,18 @@ namespace Consola
             // 1, 2, 3, 4
             // 1, 2, 3, 4, 5
             // 1, 2, 3, 4, 5
+
+            Console.WriteLine("");
+        }
+
+        /// <summary>
+        /// Average sirve para CALCULAR un PROMEDIO, de una lista de nemeros
+        /// </summary>
+        internal static void Average()
+        {
+            long?[] longs = { null, 10007L, 37L, 399846234235L };
+
+            Console.WriteLine("En promedio el resultado fue: {0}.", longs.Average());
 
             Console.WriteLine("");
         }

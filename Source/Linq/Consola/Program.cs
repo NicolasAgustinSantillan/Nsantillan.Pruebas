@@ -15,6 +15,8 @@ namespace Consola
 
             LinQ.Append();
 
+            LinQ.Average();
+
             Console.ReadKey();
         }
     }
