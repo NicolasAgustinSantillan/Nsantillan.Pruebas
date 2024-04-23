@@ -116,5 +116,24 @@ namespace Consola
 
             Console.WriteLine("");
         }
+
+        /// <summary>
+        /// Concat se encarga de CONCATENAR strings proviniete de VARIAS LISTAS
+        /// </summary>
+        internal static void Concat()
+        {
+            Pet[] cats = Pet.GetCats();
+            Pet[] dogs = Pet.GetDogs();
+
+            IEnumerable<string> query =
+                cats.Select(cat => cat.Name).Concat(dogs.Select(dog => dog.Name));
+
+            foreach (string name in query)
+            {
+                Console.WriteLine(name);
+            }
+
+            Console.WriteLine("");
+        }
     }
 }
