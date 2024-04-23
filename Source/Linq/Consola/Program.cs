@@ -13,6 +13,8 @@ namespace Consola
 
             LinQ.Any();
 
+            LinQ.Append();
+
             Console.ReadKey();
         }
     }

@@ -74,8 +74,34 @@ namespace Consola
             Console.Write("Estas personas TIENEN mascotas: ");
             foreach (string name in namesWherePets)
             {
-                Console.Write(name + " ; ");
+                Console.Write(name + "; ");
             }
+            Console.WriteLine("\n");
+        }
+
+        /// <summary>
+        /// Append sirve para agregar elementos a una lista ADEMAS podes GUARDARLOS o NO
+        /// </summary>
+        internal static void Append()
+        {
+            List<int> numbers = new List<int> { 1, 2, 3, 4 };
+
+            // Agrega el numero 5, NO LO GUARDA
+            numbers.Append(5);
+            Console.WriteLine(string.Join(", ", numbers));
+
+            // Concatena la lista con el metodo
+            Console.WriteLine(string.Join(", ", numbers.Append(5)));
+
+            // Guardamos el resultado de Append
+            List<int> newNumbers = numbers.Append(5).ToList();
+            Console.WriteLine(string.Join(", ", newNumbers));
+
+            // Resultado
+            // 1, 2, 3, 4
+            // 1, 2, 3, 4, 5
+            // 1, 2, 3, 4, 5
+
             Console.WriteLine("");
         }
     }
