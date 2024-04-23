@@ -7,9 +7,11 @@ namespace Consola
     {
         static void Main(string[] args)
         {
-            LinQ.All();
+            LinQ.Aggregate();
 
             Console.ReadKey();
+
+            LinQ.All();
         }
     }
 }
