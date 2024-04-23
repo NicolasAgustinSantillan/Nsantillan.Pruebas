@@ -9,9 +9,11 @@ namespace Consola
         {
             LinQ.Aggregate();
 
-            Console.ReadKey();
-
             LinQ.All();
+
+            LinQ.Any();
+
+            Console.ReadKey();
         }
     }
 }

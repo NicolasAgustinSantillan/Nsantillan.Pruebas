@@ -1,6 +1,6 @@
-﻿namespace Consola
+﻿namespace Consola.dto
 {
-    internal class Pet
+    class Pet
     {
         public string Name { get; set; }
         public int Age { get; set; }

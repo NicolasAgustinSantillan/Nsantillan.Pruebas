@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Consola.dto;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Consola
@@ -24,10 +26,10 @@ namespace Consola
             Console.WriteLine(
                 "La fruta mas larga es: {0}.",
                 longestName);
-
+            Console.WriteLine("");
             // El resultado es passionfruit, en caso de que SUPERBANANA fuera mas largo seria la longestName
         }
-        
+
         /// <summary>
         /// Su uso principal es de evaluar si TODOS los valores de la lista COINCIDEN con la CONDICION
         /// </summary>
@@ -46,6 +48,35 @@ namespace Consola
             bool allStartWithB = pets.All(pet => pet.Name.StartsWith("B"));
 
             Console.WriteLine("{0} mascontas comienzan con 'B'.", allStartWithB ? "TODAS" : "NO todas");
+            Console.WriteLine("");
+        }
+
+        /// <summary>
+        /// Sirve para verificar si tiene POR LO MENOS 1 elemento el ARRAY x
+        /// </summary>
+        internal static void Any()
+        {
+            var people = new List<Person>()
+            {
+                new Person { LastName = "Haas",     Pets =  new Pet[] { new Pet { Name="Barley", Age=10 },
+                                                            new Pet { Name="Boots", Age=14 },
+                                                            new Pet { Name="Whiskers", Age=6 }}},
+                new Person { LastName = "Fakhouri", Pets =  new Pet[] { new Pet { Name = "Snowball", Age = 1}}},
+                new Person { LastName = "Antebi",   Pets =  new Pet[] { }},
+                new Person { LastName = "Philips",  Pets =  new Pet[] { new Pet { Name = "Sweetie", Age = 2},
+                                                            new Pet { Name = "Rover", Age = 13}} }
+            };
+
+            // Filtramos por las personas que tiene POR LO MENOS 1 elemento el ARRAY PETS
+            // SELECT seleccionamos el LastName
+            IEnumerable<string> namesWherePets = people.Where(person => person.Pets.Any()).Select(peopleWithpPets => peopleWithpPets.LastName);
+
+            Console.Write("Estas personas TIENEN mascotas: ");
+            foreach (string name in namesWherePets)
+            {
+                Console.Write(name + " ; ");
+            }
+            Console.WriteLine("");
         }
     }
 }
