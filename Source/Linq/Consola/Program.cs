@@ -21,6 +21,8 @@ namespace Consola
 
             LinQ.Contains();
 
+            LinQ.Count();
+
             Console.ReadKey();
         }
     }

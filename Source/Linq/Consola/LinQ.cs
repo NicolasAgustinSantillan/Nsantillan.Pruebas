@@ -151,6 +151,27 @@ namespace Consola
                 "En el array {0} '{1}'.",
                 hasMango ? "EXISTE" : "NO EXISTE",
                 fruit);
+
+            Console.WriteLine("");
+        }
+
+        /// <summary>
+        /// Count sirve para contar la cantidad de elementos en una coleccion
+        /// </summary>
+        internal static void Count()
+        {
+            string[] fruits = { "apple", "banana", "mango", "orange", "passionfruit", "grape" };
+
+            try
+            {
+                int numberOfFruits = fruits.Count();
+                Console.WriteLine($"Existen {numberOfFruits} frutas en la coleccion.");
+            }
+            catch (OverflowException)
+            {
+                Console.WriteLine("The count is too large to store as an Int32.");
+                Console.WriteLine("Try using the LongCount() method instead.");
+            }
         }
     }
 }
