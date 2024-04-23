@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{29EE0ADE-FFB4-488B-99D5-62CD4BDB2DD5}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp</RootNamespace>
-    <AssemblyName>ConsoleApp</AssemblyName>
-    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <ProjectGuid>{36163B16-28E8-485F-84E0-42CBC1A137B2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Concepto</RootNamespace>
+    <AssemblyName>Concepto</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,27 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBase\DB_TEST.cs" />
-    <Compile Include="DataBase\DTO\IdiomaDTO.cs" />
-    <Compile Include="DataBase\DTO\PaisDTO.cs" />
-    <Compile Include="DataBase\DTO\PersonaDTO.cs" />
-    <Compile Include="DataBase\Procedures.cs" />
-    <Compile Include="DataBase\Utils\DbParameters.cs" />
-    <Compile Include="Folder.cs" />
-    <Compile Include="Lucas-TP-01-2023\Array_06.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="SingletonLazy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pruebas\Hash254.cs" />
-    <Compile Include="Pruebas\ListFind.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DbClient\DbClient.csproj">
-      <Project>{6cb14b3a-09b9-4f38-8ba7-5b6f066c8ceb}</Project>
-      <Name>DbClient</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
