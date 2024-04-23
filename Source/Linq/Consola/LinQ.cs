@@ -27,7 +27,10 @@ namespace Consola
 
             // El resultado es passionfruit, en caso de que SUPERBANANA fuera mas largo seria la longestName
         }
-
+        
+        /// <summary>
+        /// Su uso principal es de evaluar si TODOS los valores de la lista COINCIDEN con la CONDICION
+        /// </summary>
         public static void All()
         {
             Pet[] pets = { new Pet { Name="Barley", Age=10 },
