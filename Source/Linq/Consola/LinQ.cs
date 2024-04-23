@@ -135,5 +135,22 @@ namespace Consola
 
             Console.WriteLine("");
         }
+
+        /// <summary>
+        /// Contains determina SI EXISTE un elemento en particular
+        /// </summary>
+        internal static void Contains()
+        {
+            string[] fruits = { "apple", "banana", "mango", "orange", "passionfruit", "grape" };
+
+            string fruit = "mango";
+
+            bool hasMango = fruits.Contains(fruit);
+
+            Console.WriteLine(
+                "En el array {0} '{1}'.",
+                hasMango ? "EXISTE" : "NO EXISTE",
+                fruit);
+        }
     }
 }

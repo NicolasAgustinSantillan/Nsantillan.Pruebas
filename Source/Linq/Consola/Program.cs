@@ -19,6 +19,8 @@ namespace Consola
 
             LinQ.Concat();
 
+            LinQ.Contains();
+
             Console.ReadKey();
         }
     }
