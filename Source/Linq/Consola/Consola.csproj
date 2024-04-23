@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dto\Pet.cs" />
+    <Compile Include="dto\Product.cs" />
     <Compile Include="LinQ.cs" />
     <Compile Include="dto\Person.cs" />
     <Compile Include="Program.cs" />

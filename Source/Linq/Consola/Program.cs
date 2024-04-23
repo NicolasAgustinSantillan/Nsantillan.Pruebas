@@ -7,21 +7,24 @@ namespace Consola
     {
         static void Main(string[] args)
         {
-            LinQ.Aggregate();
+            new LinQ().Start();
+            //LinQ.Aggregate();
 
-            LinQ.All();
+            //LinQ.All();
 
-            LinQ.Any();
+            //LinQ.Any();
 
-            LinQ.Append();
+            //LinQ.Append();
 
-            LinQ.Average();
+            //LinQ.Average();
 
-            LinQ.Concat();
+            //LinQ.Concat();
 
-            LinQ.Contains();
+            //LinQ.Contains();
 
-            LinQ.Count();
+            //LinQ.Count();
+
+            //LinQ.Distinct();
 
             Console.ReadKey();
         }
