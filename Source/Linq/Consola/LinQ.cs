@@ -10,6 +10,7 @@ namespace Consola
     {
         /// <summary>
         /// Recorre todos los metodos de esta intancia y los ejecuta
+        /// https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-7.0
         /// </summary>
         public void Start()
         {
@@ -29,7 +30,7 @@ namespace Consola
         }
 
         /// <summary>
-        /// Aggregate se una para comparar un VALOR EXTERNO con los valores de una LISTA
+        /// Aggregate se usa para comparar un VALOR EXTERNO con los valores de una LISTA
         /// </summary>
         internal void Aggregate()
         {
@@ -150,7 +151,7 @@ namespace Consola
         }
 
         /// <summary>
-        /// Contains determina SI EXISTE un elemento en particular
+        /// Contains determina SI EXISTE un elemento en particular que contenga esa palabra
         /// </summary>
         internal void Contains()
         {
