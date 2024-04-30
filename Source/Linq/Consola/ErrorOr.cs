@@ -76,7 +76,7 @@ namespace Consola
         /// <summary>
         /// RunInBackground: Se ejecuta en otro Hilo
         /// For: Cuando termine recién ahi va a imprimir los resultados 
-        /// division: debe terminar sus tareas para que el hilo principal pueda seguir con su logica
+        /// division: debe terminar sus tareas para que el hilo principal pueda seguir con su lógica
         /// </summary>
         public static void Start()
         {
