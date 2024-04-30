@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Consola
 {
@@ -33,39 +35,80 @@ namespace Consola
         }
     }
 
-    public static class UseErrorOr
+    public static class Util
     {
-        public static ErrorOr<int> Divide(int numerator, int denominator)
+        public const string ErrorMessage = "Error";
+        internal static Task<ErrorOr<T>> RunInBackground<T>(Func<T> value, string error = ErrorMessage)
         {
-            if (denominator == 0)
+            return Task.Run(() =>
             {
-                return ErrorOr<int>.Failure("Division by zero");
-            }
+                try
+                {
+                    T result = value.Invoke();
+                    return Task.FromResult(ErrorOr<T>.Success(result));
+                }
+                catch (Exception ex)
+                {
+                    return Task.FromResult(ErrorOr<T>.Failure($"{error} => {ex.Message}"));
+                }
+            });
+        }
 
-            return ErrorOr<int>.Success(numerator / denominator);
+        internal static Task<ErrorOr<int>> RunInBackground(Action value, string error = ErrorMessage) 
+        {
+            return Task.Run(() =>
+            {
+                try
+                {
+                    value();
+                    return Task.FromResult(ErrorOr<int>.Success(1));
+                }
+                catch (Exception ex)
+                {
+                    return Task.FromResult(ErrorOr<int>.Failure($"{error} => {ex.Message}"));
+                }
+            });
+        }
+    }
+
+    public static class Calculadora
+    {
+        public static Task<ErrorOr<decimal>> Divide(decimal numerator, decimal denominator)
+        {
+            return Util.RunInBackground(() =>
+            {
+                return numerator / denominator;
+            }, "Error al dividir");
         }
 
 
         public static void Start()
         {
+            Util.RunInBackground(() =>
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Thread.Sleep(1000);
+                    Console.WriteLine("Soy un subproceso");
+                }
+            });
+
             int valor1, valor2;
-            Console.WriteLine(" ");
-            Console.Write("Ingrese el primer valor:");
+            Console.WriteLine(" ---------- División ---------- ");
+            Console.WriteLine("Ingrese el primer valor:");
             valor1 = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(" ");
-            Console.Write("Ingrese el segundo valor:");
+            Console.WriteLine("Ingrese el segundo valor:");
             valor2 = Convert.ToInt32(Console.ReadLine());
+            var result = Divide(valor1, valor2);
 
-            var result1 = Divide(valor1, valor2);
-            if (result1.IsError)
+            if (result.Result.IsError)
             {
-                Console.WriteLine($"Error: {result1.ErrorMessage}");
-            }
-            else
-            {
-                Console.WriteLine($"Result: {result1.Value}");
+                Console.WriteLine(result.Result.ErrorMessage);
+                return;
             }
 
+            Console.WriteLine($"Resultado de la division: {result.Result.Value:0.00}");
         }
     }
 

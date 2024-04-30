@@ -26,7 +26,7 @@ namespace Consola
 
             //LinQ.Distinct();
 
-            Consola.UseErrorOr.Start();
+            Consola.Calculadora.Start();
 
             Console.ReadKey();
         }
