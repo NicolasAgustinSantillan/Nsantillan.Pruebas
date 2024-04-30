@@ -73,42 +73,39 @@ namespace Consola
 
     public static class Calculadora
     {
-        public static Task<ErrorOr<decimal>> Divide(decimal numerator, decimal denominator)
-        {
-            return Util.RunInBackground(() =>
-            {
-                return numerator / denominator;
-            }, "Error al dividir");
-        }
-
-
+        /// <summary>
+        /// RunInBackground: Se ejecuta en otro Hilo
+        /// For: Cuando termine recién ahi va a imprimir los resultados 
+        /// division: debe terminar sus tareas para que el hilo principal pueda seguir con su logica
+        /// </summary>
         public static void Start()
         {
-            Util.RunInBackground(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Thread.Sleep(1000);
-                    Console.WriteLine("Soy un subproceso");
-                }
-            });
-
             int valor1, valor2;
-            Console.WriteLine(" ---------- División ---------- ");
-            Console.WriteLine("Ingrese el primer valor:");
-            valor1 = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine(" ");
-            Console.WriteLine("Ingrese el segundo valor:");
-            valor2 = Convert.ToInt32(Console.ReadLine());
-            var result = Divide(valor1, valor2);
-
-            if (result.Result.IsError)
+            var division = Util.RunInBackground(() =>
             {
-                Console.WriteLine(result.Result.ErrorMessage);
+                Console.WriteLine(" ---------- División ---------- ");
+                Console.WriteLine("Ingrese el primer valor:");
+                valor1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(" ");
+                Console.WriteLine("Ingrese el segundo valor:");
+                valor2 = Convert.ToInt32(Console.ReadLine());
+                return valor1 / valor2;
+            }, "Error al dividir");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("Soy un subproceso");
+            }
+
+            // Se frena el hilo principal hasta que no termine la division
+            if (division.Result.IsError)
+            {
+                Console.WriteLine(division.Result.ErrorMessage);
                 return;
             }
 
-            Console.WriteLine($"Resultado de la division: {result.Result.Value:0.00}");
+            Console.WriteLine($"Resultado de la division: {division.Result.Value:0.00}");
         }
     }
 
